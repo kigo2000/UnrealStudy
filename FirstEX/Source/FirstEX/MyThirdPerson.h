@@ -4,9 +4,11 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "InputActionValue.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "MyThirdPerson.generated.h"
+
 
 UCLASS()
 class FIRSTEX_API AMyThirdPerson : public ACharacter
@@ -31,5 +33,14 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	void Move(const FInputActionValue& Value);
 
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputMappingContext* IC_Character;
+
+    UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IA_Move;
+
+    UPROPERTY(EditAnywhere, Category = Input)
+    class UInputAction* IA_Jump;
 };
